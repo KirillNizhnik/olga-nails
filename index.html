@@ -90,16 +90,24 @@ p{margin:0;max-width:62ch}
 /* lightbox */
 dialog.lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100%;height:100%;background:var(--paper);color:var(--ink);overflow:hidden}
 dialog.lb::backdrop{background:var(--paper)}
-.lb-in{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;gap:14px;padding-block:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.lb-in{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto auto;gap:14px;padding-block:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .lb-count{font-family:var(--display);letter-spacing:.3em;color:var(--gilt);font-size:14px;font-variant-numeric:lining-nums}
-.lb-btn{font-family:var(--display);background:var(--card);color:var(--ink);border:1px solid var(--gilt);border-radius:50%;width:46px;height:46px;display:grid;place-items:center;font-size:26px;line-height:1;cursor:pointer;padding:0}
-.lb-btn:hover{background:var(--ink);color:var(--card)}
+.lb-btn{-webkit-appearance:none;appearance:none;background:var(--card);color:var(--ink);border:1px solid var(--gilt);border-radius:50%;width:52px;height:52px;display:grid;place-items:center;cursor:pointer;padding:0;transition:background .25s,color .25s,transform .25s;flex:none}
+.lb-btn svg{display:block}
+.lb-btn:active{transform:scale(.94)}
+.lb-btn.sm{width:44px;height:44px}
+.lb-top .lb-hint{flex:1;text-align:center}
+.lb-bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px}
+.lb-bar .lb-btn{visibility:hidden}
+.lb-prog{width:min(360px,100%);justify-self:center;height:1px;background:var(--rule);position:relative;overflow:hidden}
+.lb-prog i{position:absolute;inset:0 auto 0 0;background:var(--gilt);transition:width .4s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.lb-btn:hover{background:var(--ink);color:var(--card);border-color:var(--ink)}}
 .lb-btn:focus-visible{outline:1px solid var(--gilt);outline-offset:3px}
 .lb-stage{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;min-height:0;touch-action:pan-y}
 .lb-mat{justify-self:center;background:var(--card);border:1px solid var(--rule);outline:1px solid var(--gilt);outline-offset:-9px;padding:22px;display:block;min-width:0;box-shadow:0 30px 60px -30px rgba(30,42,36,.35)}
-.lb-mat img{max-width:100%;max-height:calc(100vh - 270px);max-height:calc(100dvh - 270px);width:auto;height:auto;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
-@media (max-width:640px){.lb-stage{grid-template-columns:minmax(0,1fr)}.lb-stage .lb-btn{display:none}.lb-mat{padding:12px;outline-offset:-6px}.lb-mat img{max-height:calc(100dvh - 240px)}}
+.lb-mat img{max-width:100%;max-height:calc(100vh - 270px);max-height:calc(100dvh - 290px);width:auto;height:auto;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+@media (max-width:640px){.lb-stage{grid-template-columns:minmax(0,1fr)}.lb-stage .lb-btn{display:none}.lb-bar .lb-btn{visibility:visible}.lb-top .lb-hint{display:none}.lb-cap{font-size:19px}.lb-mat{padding:12px;outline-offset:-6px}.lb-mat img{max-height:calc(100dvh - 280px)}}
 .lb-cap{text-align:center;font-family:var(--display);font-style:italic;font-size:22px;display:flex;gap:12px;justify-content:center;align-items:baseline}
 .lb-cap b{font-style:normal;font-weight:600;color:var(--gilt);letter-spacing:.2em;font-size:13px}
 .lb-thumbs{display:flex;gap:8px;justify-content:safe center;overflow-x:auto;padding:4px 2px 2px;scrollbar-width:none}
@@ -231,13 +239,14 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
 
 <dialog class="lb" id="lb" aria-label="Портфолио">
   <div class="lb-in">
-    <div class="lb-top"><span class="lb-count" id="lb-count">I / VIII</span><button class="lb-btn" id="lb-close" type="button" aria-label="Закрыть">×</button></div>
+    <div class="lb-top"><span class="lb-count" id="lb-count">I / VIII</span><span class="lb-hint" id="lb-hint"></span><button class="lb-btn" id="lb-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></button></div>
     <div class="lb-stage" id="lb-stage">
-      <button class="lb-btn" id="lb-prev" type="button" aria-label="Предыдущее фото">‹</button>
+      <button class="lb-btn lb-p" id="lb-prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></button>
       <div class="lb-mat"><img id="lb-img" alt=""></div>
-      <button class="lb-btn" id="lb-next" type="button" aria-label="Следующее фото">›</button>
+      <button class="lb-btn lb-n" id="lb-next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></button>
     </div>
-    <div class="lb-cap" id="lb-cap"></div>
+    <div class="lb-bar"><button class="lb-btn sm lb-p" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></button><div class="lb-cap" id="lb-cap"></div><button class="lb-btn sm lb-n" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></button></div>
+    <div class="lb-prog" aria-hidden="true"><i id="lb-prog"></i></div>
     <div class="lb-thumbs" id="lb-thumbs"></div>
   </div>
 </dialog>
@@ -269,14 +278,15 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
   items.forEach(function(it,i){var b=document.createElement('button');b.type='button';b.innerHTML='<img src="'+it.src+'" alt="">';b.addEventListener('click',function(){show(i,0)});th.appendChild(b)});
   function labels(){var ro=lang()==='ro';
     document.getElementById('lb-close').setAttribute('aria-label',ro?'Închide':'Закрыть');
-    document.getElementById('lb-prev').setAttribute('aria-label',ro?'Fotografia anterioară':'Предыдущее фото');
-    document.getElementById('lb-next').setAttribute('aria-label',ro?'Fotografia următoare':'Следующее фото');
+    document.querySelectorAll('.lb-p').forEach(function(b){b.setAttribute('aria-label',ro?'Fotografia anterioară':'Предыдущее фото')});
+    document.querySelectorAll('.lb-n').forEach(function(b){b.setAttribute('aria-label',ro?'Fotografia următoare':'Следующее фото')});
+    document.getElementById('lb-hint').textContent=ro?'← → pentru navigare · Esc pentru a închide':'← → листать · Esc закрыть';
     lb.setAttribute('aria-label',ro?'Portofoliu':'Портфолио');}
   function show(i,dir){
     cur=(i+items.length)%items.length;
     var apply=function(){img.src=items[cur].src; img.alt=title(cur);
       cap.innerHTML='<b>'+R[cur]+'</b><span></span>'; cap.lastChild.textContent=title(cur);
-      cnt.textContent=R[cur]+' / '+R[items.length-1];
+      cnt.textContent=R[cur]+' / '+R[items.length-1]; document.getElementById('lb-prog').style.width=((cur+1)/items.length*100)+'%';
       [].forEach.call(th.children,function(b,k){b.setAttribute('aria-current',k===cur?'true':'false'); if(k===cur&&b.scrollIntoView) b.scrollIntoView({block:'nearest',inline:'center'})});
       [1,-1].forEach(function(d){var p=new Image();p.src=items[(cur+d+items.length)%items.length].src});};
     if(dir&&!reduce&&img.animate){
@@ -292,8 +302,9 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
   lb.addEventListener('close',function(){document.body.style.overflow=''; if(opener) opener.focus();});
   document.querySelectorAll('.plate').forEach(function(b){b.addEventListener('click',function(){open(+b.dataset.i,b)})});
   document.getElementById('lb-close').addEventListener('click',function(){lb.close()});
-  document.getElementById('lb-prev').addEventListener('click',function(){show(cur-1,-1)});
-  document.getElementById('lb-next').addEventListener('click',function(){show(cur+1,1)});
+  document.querySelectorAll('.lb-p').forEach(function(b){b.addEventListener('click',function(){show(cur-1,-1)})});
+  document.querySelectorAll('.lb-n').forEach(function(b){b.addEventListener('click',function(){show(cur+1,1)})});
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-in')) lb.close()});
   lb.addEventListener('keydown',function(e){
     if(e.key==='ArrowRight'){e.preventDefault();show(cur+1,1)} else if(e.key==='ArrowLeft'){e.preventDefault();show(cur-1,-1)}
     else if(e.key==='Home'){e.preventDefault();show(0,-1)} else if(e.key==='End'){e.preventDefault();show(items.length-1,1)}});
