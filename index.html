@@ -79,6 +79,38 @@ p{margin:0;max-width:62ch}
 .plates img{width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
 .plates figcaption{font-family:var(--display);font-style:italic;font-size:15px;color:var(--muted);text-align:center;line-height:1.3}
 .plates figcaption b{font-style:normal;font-weight:600;color:var(--gilt);letter-spacing:.15em;margin-right:6px;font-size:12px}
+
+.plate{all:unset;display:block;position:relative;cursor:zoom-in;overflow:hidden}
+.plate img{transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .6s}
+.plate:hover img{transform:scale(1.04);filter:saturate(1.05)}
+.plate .zoom{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;border:1px solid var(--gilt);background:var(--card);color:var(--gilt);display:grid;place-items:center;font-family:var(--display);font-size:20px;line-height:1;opacity:0;transform:translateY(4px);transition:.3s}
+.plate:hover .zoom,.plate:focus-visible .zoom{opacity:1;transform:none}
+@media (hover:none){.plate .zoom{opacity:.9;transform:none}}
+.plate:focus-visible{outline:1px solid var(--gilt);outline-offset:4px}
+/* lightbox */
+dialog.lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100%;height:100%;background:var(--paper);color:var(--ink);overflow:hidden}
+dialog.lb::backdrop{background:var(--paper)}
+.lb-in{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;gap:14px;padding-block:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lb-count{font-family:var(--display);letter-spacing:.3em;color:var(--gilt);font-size:14px;font-variant-numeric:lining-nums}
+.lb-btn{font-family:var(--display);background:var(--card);color:var(--ink);border:1px solid var(--gilt);border-radius:50%;width:46px;height:46px;display:grid;place-items:center;font-size:26px;line-height:1;cursor:pointer;padding:0}
+.lb-btn:hover{background:var(--ink);color:var(--card)}
+.lb-btn:focus-visible{outline:1px solid var(--gilt);outline-offset:3px}
+.lb-stage{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;min-height:0;touch-action:pan-y}
+.lb-mat{justify-self:center;background:var(--card);border:1px solid var(--rule);outline:1px solid var(--gilt);outline-offset:-9px;padding:22px;display:block;min-width:0;box-shadow:0 30px 60px -30px rgba(30,42,36,.35)}
+.lb-mat img{max-width:100%;max-height:calc(100vh - 270px);max-height:calc(100dvh - 270px);width:auto;height:auto;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+@media (max-width:640px){.lb-stage{grid-template-columns:minmax(0,1fr)}.lb-stage .lb-btn{display:none}.lb-mat{padding:12px;outline-offset:-6px}.lb-mat img{max-height:calc(100dvh - 240px)}}
+.lb-cap{text-align:center;font-family:var(--display);font-style:italic;font-size:22px;display:flex;gap:12px;justify-content:center;align-items:baseline}
+.lb-cap b{font-style:normal;font-weight:600;color:var(--gilt);letter-spacing:.2em;font-size:13px}
+.lb-thumbs{display:flex;gap:8px;justify-content:safe center;overflow-x:auto;padding:4px 2px 2px;scrollbar-width:none}
+.lb-thumbs button{all:unset;cursor:pointer;flex:none;width:44px;height:55px;opacity:.45;transition:opacity .25s;border-bottom:2px solid transparent;padding-bottom:3px}
+.lb-thumbs button img{width:100%;height:100%;object-fit:cover;display:block}
+.lb-thumbs button[aria-current="true"]{opacity:1;border-bottom-color:var(--gilt)}
+.lb-thumbs button:focus-visible{outline:1px solid var(--gilt);outline-offset:2px}
+.lb-hint{font-family:var(--display);font-style:italic;color:var(--muted);font-size:14px;text-align:center}
+@media (prefers-reduced-motion:reduce){.plate img,.plate .zoom{transition:none}}
+.q{margin:8px 0 0;text-align:center;font-family:var(--display);font-style:italic;font-size:clamp(22px,2.6vw,28px);line-height:1.3;color:var(--claret);display:grid;gap:14px;justify-items:center}
+.q::before,.q::after{content:"";width:56px;height:1px;background:var(--gilt)}
 footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:center}
 @media print{
   :root{--paper:#fff;--card:#fff;color-scheme:light}
@@ -101,7 +133,7 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
       <div class="mono" aria-hidden="true"><span class="ru">ОН</span><span class="ro">ON</span></div>
       <span class="sc"><span class="ru">Кишинёв · Ботаника</span><span class="ro">Chișinău · Botanica</span></span>
       <h1><span class="ru">Ольга Наконечная</span><span class="ro">Olga Nakonecinaia</span></h1>
-      <p class="role"><span class="ru">Мастер маникюра</span><span class="ro">Maestru manichiură</span></p>
+      <p class="role"><span class="ru">Мастер маникюра · девять лет практики</span><span class="ro">Maestru manichiură · nouă ani de practică</span></p>
       <div class="flourish" aria-hidden="true"><span>◆</span></div>
     </header>
 
@@ -119,7 +151,7 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
           <a class="pdf ro" href="Olga_Nakonecinaia_CV_RO.pdf" download>Descarcă CV-ul (PDF)</a>
         </div>
         <div class="part">
-          <h3 class="sc"><span class="ru">Время работы</span><span class="ro">Durata lucrării</span></h3>
+          <h3 class="sc"><span class="ru">Время на услугу</span><span class="ro">Durata serviciului</span></h3>
           <dl class="rows">
             <dt><span class="ru">Простой маникюр</span><span class="ro">Manichiură simplă</span></dt><dd><span class="ru">~1,5 ч</span><span class="ro">~1,5 h</span></dd>
             <dt><span class="ru">Сложные работы</span><span class="ro">Lucrări complexe</span></dt><dd><span class="ru">2–3 ч</span><span class="ro">2–3 h</span></dd>
@@ -157,7 +189,7 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
         <section>
           <h2><span class="sc"><span class="ru">III · Опыт</span><span class="ro">III · Experiență</span></span><span class="ru">Практика</span><span class="ro">Practică</span></h2>
           <div class="job">
-            <div class="h"><b><span class="ru">Мастер маникюра на дому</span><span class="ro">Maestru manichiură la domiciliu</span></b><span class="when"><span class="ru">около 9 лет</span><span class="ro">aproximativ 9 ani</span></span></div>
+            <div class="h"><b><span class="ru">Частная практика · маникюр на дому</span><span class="ro">Practică privată · manichiură la domiciliu</span></b><span class="when"><span class="ru">около 9 лет</span><span class="ro">aproximativ 9 ani</span></span></div>
             <p class="ru">Маникюр и покрытие гель-лаком, снятие материала, выравнивание ногтевой пластины, ремонт ногтей. Работа с разной формой и длиной ногтей.</p>
             <p class="ro">Manichiură și acoperire cu gel-lac, îndepărtarea materialului, nivelarea plăcii unghiale, repararea unghiilor. Lucru cu diferite forme și lungimi de unghii.</p>
           </div>
@@ -168,6 +200,7 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
           <p class="ru">Самостоятельное обучение и многолетняя практика.</p>
           <p class="ro">Autodidactă, cu mulți ani de practică.</p>
         </section>
+        <blockquote class="q"><span class="ru">Аккуратность и качество покрытия — главное в моей работе.</span><span class="ro">Precizia și calitatea acoperirii sunt esențiale în munca mea.</span></blockquote>
       </main>
     </div>
 
@@ -178,14 +211,14 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
         <div class="flourish" aria-hidden="true"><span>◆</span></div>
       </div>
       <div class="plates">
-        <figure><img src="img/p0.jpg" alt="" loading="lazy"><figcaption><b>I</b><span class="ru">Френч с мерцанием</span><span class="ro">French cu sclipici</span></figcaption></figure>
-        <figure><img src="img/p5.jpg" alt="" loading="lazy"><figcaption><b>II</b><span class="ru">Нюд, миндаль</span><span class="ro">Nude, migdală</span></figcaption></figure>
-        <figure><img src="img/p8.jpg" alt="" loading="lazy"><figcaption><b>III</b><span class="ru">Классический красный</span><span class="ro">Roșu clasic</span></figcaption></figure>
-        <figure><img src="img/p9.jpg" alt="" loading="lazy"><figcaption><b>IV</b><span class="ru">Мокко</span><span class="ro">Mocha</span></figcaption></figure>
-        <figure><img src="img/p6.jpg" alt="" loading="lazy"><figcaption><b>V</b><span class="ru">Молочно-розовый</span><span class="ro">Roz lăptos</span></figcaption></figure>
-        <figure><img src="img/p10.jpg" alt="" loading="lazy"><figcaption><b>VI</b><span class="ru">Карамель, длинные</span><span class="ro">Caramel, lungi</span></figcaption></figure>
-        <figure><img src="img/p4.jpg" alt="" loading="lazy"><figcaption><b>VII</b><span class="ru">Френч, деталь</span><span class="ro">French, detaliu</span></figcaption></figure>
-        <figure><img src="img/p7.jpg" alt="" loading="lazy"><figcaption><b>VIII</b><span class="ru">Красный с дизайном</span><span class="ro">Roșu cu design</span></figcaption></figure>
+        <figure><button class="plate" type="button" data-i="0"><img src="img/p0.jpg" alt="" loading="lazy"><span class="zoom" aria-hidden="true">+</span></button><figcaption><b>I</b><span class="ru">Френч с мерцанием</span><span class="ro">French cu sclipici</span></figcaption></figure>
+        <figure><button class="plate" type="button" data-i="1"><img src="img/p5.jpg" alt="" loading="lazy"><span class="zoom" aria-hidden="true">+</span></button><figcaption><b>II</b><span class="ru">Нюд, миндаль</span><span class="ro">Nude, migdală</span></figcaption></figure>
+        <figure><button class="plate" type="button" data-i="2"><img src="img/p8.jpg" alt="" loading="lazy"><span class="zoom" aria-hidden="true">+</span></button><figcaption><b>III</b><span class="ru">Классический красный</span><span class="ro">Roșu clasic</span></figcaption></figure>
+        <figure><button class="plate" type="button" data-i="3"><img src="img/p9.jpg" alt="" loading="lazy"><span class="zoom" aria-hidden="true">+</span></button><figcaption><b>IV</b><span class="ru">Мокко</span><span class="ro">Mocha</span></figcaption></figure>
+        <figure><button class="plate" type="button" data-i="4"><img src="img/p6.jpg" alt="" loading="lazy"><span class="zoom" aria-hidden="true">+</span></button><figcaption><b>V</b><span class="ru">Молочно-розовый</span><span class="ro">Roz lăptos</span></figcaption></figure>
+        <figure><button class="plate" type="button" data-i="5"><img src="img/p10.jpg" alt="" loading="lazy"><span class="zoom" aria-hidden="true">+</span></button><figcaption><b>VI</b><span class="ru">Карамель, длинные</span><span class="ro">Caramel, lungi</span></figcaption></figure>
+        <figure><button class="plate" type="button" data-i="6"><img src="img/p4.jpg" alt="" loading="lazy"><span class="zoom" aria-hidden="true">+</span></button><figcaption><b>VII</b><span class="ru">Френч, деталь</span><span class="ro">French, detaliu</span></figcaption></figure>
+        <figure><button class="plate" type="button" data-i="7"><img src="img/p7.jpg" alt="" loading="lazy"><span class="zoom" aria-hidden="true">+</span></button><figcaption><b>VIII</b><span class="ru">Красный с дизайном</span><span class="ro">Roșu cu design</span></figcaption></figure>
       </div>
     </div>
 
@@ -195,6 +228,19 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
     </footer>
   </div>
 </div>
+
+<dialog class="lb" id="lb" aria-label="Портфолио">
+  <div class="lb-in">
+    <div class="lb-top"><span class="lb-count" id="lb-count">I / VIII</span><button class="lb-btn" id="lb-close" type="button" aria-label="Закрыть">×</button></div>
+    <div class="lb-stage" id="lb-stage">
+      <button class="lb-btn" id="lb-prev" type="button" aria-label="Предыдущее фото">‹</button>
+      <div class="lb-mat"><img id="lb-img" alt=""></div>
+      <button class="lb-btn" id="lb-next" type="button" aria-label="Следующее фото">›</button>
+    </div>
+    <div class="lb-cap" id="lb-cap"></div>
+    <div class="lb-thumbs" id="lb-thumbs"></div>
+  </div>
+</dialog>
 
 <script>
 (function(){
@@ -210,6 +256,52 @@ footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:cen
   var h=(location.hash||'').replace('#','');
   if(!h){ try{ var q=new URLSearchParams(location.search).get('lang'); if(q) h=q; }catch(e){} }
   set(h==='ro'?'ro':'ru');
+})();
+(function(){
+  var lb=document.getElementById('lb'); if(!lb||!lb.showModal) return;
+  var figs=[].slice.call(document.querySelectorAll('.plates figure'));
+  var R=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
+  var img=document.getElementById('lb-img'), cap=document.getElementById('lb-cap'), cnt=document.getElementById('lb-count'), th=document.getElementById('lb-thumbs');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, cur=0, opener=null;
+  var items=figs.map(function(f){return {src:f.querySelector('img').getAttribute('src'), fig:f}});
+  function lang(){return document.documentElement.getAttribute('data-lang')==='ro'?'ro':'ru'}
+  function title(i){var e=items[i].fig.querySelector('figcaption .'+lang());return e?e.textContent:''}
+  items.forEach(function(it,i){var b=document.createElement('button');b.type='button';b.innerHTML='<img src="'+it.src+'" alt="">';b.addEventListener('click',function(){show(i,0)});th.appendChild(b)});
+  function labels(){var ro=lang()==='ro';
+    document.getElementById('lb-close').setAttribute('aria-label',ro?'Închide':'Закрыть');
+    document.getElementById('lb-prev').setAttribute('aria-label',ro?'Fotografia anterioară':'Предыдущее фото');
+    document.getElementById('lb-next').setAttribute('aria-label',ro?'Fotografia următoare':'Следующее фото');
+    lb.setAttribute('aria-label',ro?'Portofoliu':'Портфолио');}
+  function show(i,dir){
+    cur=(i+items.length)%items.length;
+    var apply=function(){img.src=items[cur].src; img.alt=title(cur);
+      cap.innerHTML='<b>'+R[cur]+'</b><span></span>'; cap.lastChild.textContent=title(cur);
+      cnt.textContent=R[cur]+' / '+R[items.length-1];
+      [].forEach.call(th.children,function(b,k){b.setAttribute('aria-current',k===cur?'true':'false'); if(k===cur&&b.scrollIntoView) b.scrollIntoView({block:'nearest',inline:'center'})});
+      [1,-1].forEach(function(d){var p=new Image();p.src=items[(cur+d+items.length)%items.length].src});};
+    if(dir&&!reduce&&img.animate){
+      img.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateX('+(-24*dir)+'px)'}],{duration:160,easing:'ease-in'}).onfinish=function(){
+        apply(); img.animate([{opacity:0,transform:'translateX('+(24*dir)+'px)'},{opacity:1,transform:'none'}],{duration:280,easing:'cubic-bezier(.2,.7,.2,1)'});};
+    } else apply();
+  }
+  function open(i,btn){opener=btn; labels(); show(i,0); lb.showModal(); document.body.style.overflow='hidden';
+    if(!reduce&&btn&&img.animate){var a=btn.getBoundingClientRect();
+      requestAnimationFrame(function(){var b=img.getBoundingClientRect(); if(!b.width) return;
+        img.animate([{transform:'translate('+(a.left+a.width/2-(b.left+b.width/2))+'px,'+(a.top+a.height/2-(b.top+b.height/2))+'px) scale('+(a.width/b.width)+')',opacity:.6},{transform:'none',opacity:1}],{duration:520,easing:'cubic-bezier(.2,.7,.2,1)'});});}
+  }
+  lb.addEventListener('close',function(){document.body.style.overflow=''; if(opener) opener.focus();});
+  document.querySelectorAll('.plate').forEach(function(b){b.addEventListener('click',function(){open(+b.dataset.i,b)})});
+  document.getElementById('lb-close').addEventListener('click',function(){lb.close()});
+  document.getElementById('lb-prev').addEventListener('click',function(){show(cur-1,-1)});
+  document.getElementById('lb-next').addEventListener('click',function(){show(cur+1,1)});
+  lb.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){e.preventDefault();show(cur+1,1)} else if(e.key==='ArrowLeft'){e.preventDefault();show(cur-1,-1)}
+    else if(e.key==='Home'){e.preventDefault();show(0,-1)} else if(e.key==='End'){e.preventDefault();show(items.length-1,1)}});
+  var st=document.getElementById('lb-stage'), x0=null, y0=0;
+  st.addEventListener('pointerdown',function(e){x0=e.clientX;y0=e.clientY});
+  st.addEventListener('pointerup',function(e){if(x0===null)return; var dx=e.clientX-x0, dy=e.clientY-y0; x0=null;
+    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)) show(cur+(dx<0?1:-1),dx<0?1:-1);});
+  st.addEventListener('click',function(e){if(e.target===st) lb.close()});
 })();
 </script>
 
