@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Ольга Наконечная — мастер маникюра, Кишинёв. Резюме и портфолио.">
+<meta property="og:title" content="Ольга Наконечная — мастер маникюра">
+<meta property="og:image" content="https://kirillnizhnik.github.io/olga-nails/img/portrait.jpg">
+<title>Ольга Наконечная</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+img{max-width:100%}
+.pdf{font-family:var(--display);font-style:italic;color:var(--claret);text-decoration:none;border-bottom:1px solid var(--rule);justify-self:start}
+/* Layout: centred engraved masthead with monogram → portrait + particulars column beside the CV text → plate-style portfolio. Old-money stationery: ivory card, bottle green ink, claret and gilt hairlines. */
+:root{
+  --paper:#f5f0e6; --card:#fbf8f2; --ink:#1e2a24; --muted:#5e675f; --gilt:#a8874f; --claret:#6e1f2f; --rule:#d9cdb5;
+  --display:"Cormorant Garamond","Cormorant",Garamond,"Times New Roman",serif;
+  --body:"EB Garamond",Garamond,Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#141c18; --card:#1a241f; --ink:#ece4d4; --muted:#a9ad9f; --gilt:#c4a46a; --claret:#d89aa6; --rule:#33413a; color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#141c18; --card:#1a241f; --ink:#ece4d4; --muted:#a9ad9f; --gilt:#c4a46a; --claret:#d89aa6; --rule:#33413a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;margin:0}
+html:not([data-lang="ro"]) .ro, html[data-lang="ro"] .ru{display:none!important}
+.wrap{max-width:1040px;margin:0 auto;padding-block:28px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sheet{background:var(--card);border:1px solid var(--rule);outline:1px solid var(--rule);outline-offset:-10px;padding:56px clamp(20px,6vw,72px) 64px}
+.lang{display:flex;justify-content:flex-end;gap:4px;font-family:var(--display);font-size:15px;letter-spacing:.2em;margin-bottom:8px}
+.lang button{font:inherit;letter-spacing:inherit;border:0;background:none;color:var(--muted);padding:6px 8px;cursor:pointer;border-bottom:1px solid transparent}
+.lang button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--gilt)}
+.lang button:focus-visible,a:focus-visible{outline:1px solid var(--gilt);outline-offset:3px}
+.sc{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--gilt)}
+header.mast{text-align:center;display:grid;justify-items:center;gap:14px;padding-bottom:36px}
+.mono{width:76px;height:76px;border:1px solid var(--gilt);border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-style:italic;font-size:30px;color:var(--claret);position:relative}
+.mono::after{content:"";position:absolute;inset:4px;border:1px solid var(--rule);border-radius:50%}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(38px,6.4vw,68px);line-height:1.04;letter-spacing:.06em;text-transform:uppercase;margin:6px 0 0;text-wrap:balance}
+.role{font-family:var(--display);font-style:italic;font-size:clamp(20px,2.4vw,25px);color:var(--muted);margin:0}
+.flourish{display:flex;align-items:center;gap:14px;width:min(360px,80%);color:var(--gilt)}
+.flourish::before,.flourish::after{content:"";flex:1;height:1px;background:var(--gilt)}
+.flourish span{font-size:12px}
+.grid{display:grid;grid-template-columns:280px minmax(0,1fr);gap:56px;border-top:1px solid var(--rule);padding-top:44px}
+@media (max-width:820px){.grid{grid-template-columns:minmax(0,1fr);gap:40px}}
+aside{display:grid;gap:30px;align-content:start}
+.portrait{margin:0;display:grid;gap:10px}
+.portrait img{width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;display:block;filter:saturate(.92)}
+.portrait figcaption{font-family:var(--display);font-style:italic;font-size:16px;color:var(--muted);text-align:center}
+@media (max-width:820px){.portrait{max-width:320px;justify-self:center}}
+.part{display:grid;gap:10px}
+.part h3{margin:0;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+dl.rows{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 16px;font-variant-numeric:oldstyle-nums}
+dl.rows dt{margin:0;color:var(--muted)}dl.rows dd{margin:0;text-align:right}
+ul.plain{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+ul.plain li{padding-left:18px;position:relative}
+ul.plain li::before{content:"";position:absolute;left:2px;top:.72em;width:5px;height:5px;transform:rotate(45deg);background:var(--gilt)}
+.tg{color:var(--claret);text-decoration:none;border-bottom:1px solid var(--gilt);font-size:20px;justify-self:start}
+.handle{user-select:all}
+main{display:grid;gap:40px;min-width:0;align-content:start}
+section{display:grid;gap:14px}
+h2{font-family:var(--display);font-weight:500;font-size:30px;line-height:1.1;margin:0;display:grid;gap:6px}
+h2 .sc{font-size:12px}
+p{margin:0;max-width:62ch}
+.lede{font-size:21px;line-height:1.55}
+.lede::first-letter{font-family:var(--display);font-size:3.1em;float:left;line-height:.8;padding:6px 10px 0 0;color:var(--claret)}
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;list-style:none;margin:0;padding:0}
+@media (max-width:560px){.skills{grid-template-columns:minmax(0,1fr)}}
+.skills li{padding:10px 0;border-bottom:1px solid var(--rule);display:flex;gap:12px}
+.skills li i{font-family:var(--display);font-style:italic;color:var(--gilt);min-width:1.8em}
+.job{display:grid;gap:6px;border-left:1px solid var(--gilt);padding-left:22px}
+.job .h{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.job b{font-family:var(--display);font-weight:600;font-size:23px}
+.job .when{font-family:var(--display);font-style:italic;color:var(--muted)}
+.portfolio{margin-top:56px;border-top:1px solid var(--rule);padding-top:48px;display:grid;gap:28px}
+.portfolio .head{text-align:center;display:grid;gap:8px;justify-items:center}
+.plates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media (max-width:820px){.plates{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.plates figure{margin:0;display:grid;gap:8px}
+.plates img{width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.plates figcaption{font-family:var(--display);font-style:italic;font-size:15px;color:var(--muted);text-align:center;line-height:1.3}
+.plates figcaption b{font-style:normal;font-weight:600;color:var(--gilt);letter-spacing:.15em;margin-right:6px;font-size:12px}
+footer{margin-top:44px;text-align:center;display:grid;gap:10px;justify-items:center}
+@media print{
+  :root{--paper:#fff;--card:#fff;color-scheme:light}
+  .lang,.portfolio{display:none!important}
+  .sheet{border:0;outline:0;padding:0}
+  .wrap{padding:0}
+  @page{size:A4;margin:14mm}
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="lang" role="group" aria-label="Language">
+    <button id="btn-ru" type="button" data-set="ru" aria-pressed="true">RU</button>
+    <button id="btn-ro" type="button" data-set="ro" aria-pressed="false">RO</button>
+  </div>
+  <div class="sheet">
+    <header class="mast">
+      <div class="mono" aria-hidden="true"><span class="ru">ОН</span><span class="ro">ON</span></div>
+      <span class="sc"><span class="ru">Кишинёв · Ботаника</span><span class="ro">Chișinău · Botanica</span></span>
+      <h1><span class="ru">Ольга Наконечная</span><span class="ro">Olga Nakonecinaia</span></h1>
+      <p class="role"><span class="ru">Мастер маникюра</span><span class="ro">Maestru manichiură</span></p>
+      <div class="flourish" aria-hidden="true"><span>◆</span></div>
+    </header>
+
+    <div class="grid">
+      <aside>
+        <figure class="portrait">
+          <img src="img/portrait.jpg" alt="Ольга Наконечная">
+          <figcaption><span class="ru">Ищу место в салоне красоты</span><span class="ro">Caut un post într-un salon de frumusețe</span></figcaption>
+        </figure>
+        <div class="part">
+          <h3 class="sc"><span class="ru">Контакты</span><span class="ro">Contacte</span></h3>
+          <a class="tg" href="https://t.me/Kolochik" target="_blank" rel="noopener">Telegram · <span class="handle">@Kolochik</span></a>
+          <span><span class="ru">Кишинёв, сектор Ботаника</span><span class="ro">Chișinău, sectorul Botanica</span></span>
+          <a class="pdf ru" href="Olga_Nakonechnaya_CV_RU.pdf" download>Скачать резюме (PDF)</a>
+          <a class="pdf ro" href="Olga_Nakonecinaia_CV_RO.pdf" download>Descarcă CV-ul (PDF)</a>
+        </div>
+        <div class="part">
+          <h3 class="sc"><span class="ru">Время работы</span><span class="ro">Durata lucrării</span></h3>
+          <dl class="rows">
+            <dt><span class="ru">Простой маникюр</span><span class="ro">Manichiură simplă</span></dt><dd><span class="ru">~1,5 ч</span><span class="ro">~1,5 h</span></dd>
+            <dt><span class="ru">Сложные работы</span><span class="ro">Lucrări complexe</span></dt><dd><span class="ru">2–3 ч</span><span class="ro">2–3 h</span></dd>
+          </dl>
+        </div>
+        <div class="part">
+          <h3 class="sc"><span class="ru">Условия</span><span class="ro">Condiții</span></h3>
+          <ul class="plain ru"><li>Полный рабочий день</li><li>Работа на материалах салона</li><li>Оплата — по договорённости</li></ul>
+          <ul class="plain ro"><li>Normă întreagă</li><li>Lucru cu materialele salonului</li><li>Salariul — negociabil</li></ul>
+        </div>
+        <div class="part">
+          <h3 class="sc"><span class="ru">Языки</span><span class="ro">Limbi</span></h3>
+          <ul class="plain ru"><li>Русский — свободно</li><li>Румынский — изучаю базовые фразы для общения с клиентами</li></ul>
+          <ul class="plain ro"><li>Rusă — fluent</li><li>Română — învăț expresiile de bază pentru comunicarea cu clienții</li></ul>
+        </div>
+      </aside>
+
+      <main>
+        <section>
+          <h2><span class="sc"><span class="ru">I · О себе</span><span class="ro">I · Despre mine</span></span><span class="ru">Девять лет практики</span><span class="ro">Nouă ani de practică</span></h2>
+          <p class="lede ru">Занимаюсь маникюром около девяти лет: начинала сама и всё освоила на практике. Ответственно отношусь к работе, особое внимание уделяю аккуратности и качеству покрытия. Хочу развиваться и работать в команде.</p>
+          <p class="lede ro">Fac manichiură de aproximativ nouă ani: am început singură și am învățat totul prin practică. Sunt responsabilă și atentă la precizie și la calitatea acoperirii. Îmi doresc să mă dezvolt și să lucrez în echipă.</p>
+        </section>
+
+        <section>
+          <h2><span class="sc"><span class="ru">II · Навыки</span><span class="ro">II · Competențe</span></span><span class="ru">Что я делаю</span><span class="ro">Ce fac</span></h2>
+          <ul class="skills ru">
+            <li><i>i</i>Комбинированный маникюр</li><li><i>ii</i>Покрытие гель-лаком</li><li><i>iii</i>Выравнивание ногтевой пластины</li><li><i>iv</i>Снятие старого покрытия</li><li><i>v</i>Французский маникюр</li><li><i>vi</i>Ремонт сломанных ногтей</li><li><i>vii</i>Короткие и длинные ногти</li>
+          </ul>
+          <ul class="skills ro">
+            <li><i>i</i>Manichiură combinată</li><li><i>ii</i>Acoperire cu gel-lac</li><li><i>iii</i>Nivelarea plăcii unghiale</li><li><i>iv</i>Îndepărtarea acoperirii vechi</li><li><i>v</i>Manichiură franceză</li><li><i>vi</i>Repararea unghiilor rupte</li><li><i>vii</i>Unghii scurte și lungi</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><span class="sc"><span class="ru">III · Опыт</span><span class="ro">III · Experiență</span></span><span class="ru">Практика</span><span class="ro">Practică</span></h2>
+          <div class="job">
+            <div class="h"><b><span class="ru">Мастер маникюра на дому</span><span class="ro">Maestru manichiură la domiciliu</span></b><span class="when"><span class="ru">около 9 лет</span><span class="ro">aproximativ 9 ani</span></span></div>
+            <p class="ru">Маникюр и покрытие гель-лаком, снятие материала, выравнивание ногтевой пластины, ремонт ногтей. Работа с разной формой и длиной ногтей.</p>
+            <p class="ro">Manichiură și acoperire cu gel-lac, îndepărtarea materialului, nivelarea plăcii unghiale, repararea unghiilor. Lucru cu diferite forme și lungimi de unghii.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2><span class="sc"><span class="ru">IV · Образование</span><span class="ro">IV · Studii</span></span><span class="ru">Самостоятельное обучение</span><span class="ro">Autodidactă</span></h2>
+          <p class="ru">Самостоятельное обучение и многолетняя практика.</p>
+          <p class="ro">Autodidactă, cu mulți ani de practică.</p>
+        </section>
+      </main>
+    </div>
+
+    <div class="portfolio" id="portfolio">
+      <div class="head">
+        <span class="sc"><span class="ru">Портфолио</span><span class="ro">Portofoliu</span></span>
+        <h2><span class="ru">Избранные работы</span><span class="ro">Lucrări alese</span></h2>
+        <div class="flourish" aria-hidden="true"><span>◆</span></div>
+      </div>
+      <div class="plates">
+        <figure><img src="img/p0.jpg" alt="" loading="lazy"><figcaption><b>I</b><span class="ru">Френч с мерцанием</span><span class="ro">French cu sclipici</span></figcaption></figure>
+        <figure><img src="img/p5.jpg" alt="" loading="lazy"><figcaption><b>II</b><span class="ru">Нюд, миндаль</span><span class="ro">Nude, migdală</span></figcaption></figure>
+        <figure><img src="img/p8.jpg" alt="" loading="lazy"><figcaption><b>III</b><span class="ru">Классический красный</span><span class="ro">Roșu clasic</span></figcaption></figure>
+        <figure><img src="img/p9.jpg" alt="" loading="lazy"><figcaption><b>IV</b><span class="ru">Мокко</span><span class="ro">Mocha</span></figcaption></figure>
+        <figure><img src="img/p6.jpg" alt="" loading="lazy"><figcaption><b>V</b><span class="ru">Молочно-розовый</span><span class="ro">Roz lăptos</span></figcaption></figure>
+        <figure><img src="img/p10.jpg" alt="" loading="lazy"><figcaption><b>VI</b><span class="ru">Карамель, длинные</span><span class="ro">Caramel, lungi</span></figcaption></figure>
+        <figure><img src="img/p4.jpg" alt="" loading="lazy"><figcaption><b>VII</b><span class="ru">Френч, деталь</span><span class="ro">French, detaliu</span></figcaption></figure>
+        <figure><img src="img/p7.jpg" alt="" loading="lazy"><figcaption><b>VIII</b><span class="ru">Красный с дизайном</span><span class="ro">Roșu cu design</span></figcaption></figure>
+      </div>
+    </div>
+
+    <footer>
+      <div class="flourish" aria-hidden="true"><span>◆</span></div>
+      <span class="sc"><span class="ru">О. Наконечная · Кишинёв</span><span class="ro">O. Nakonecinaia · Chișinău</span></span>
+    </footer>
+  </div>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function set(l){
+    if(l!=='ro')l='ru';
+    root.setAttribute('data-lang',l); root.lang=l;
+    document.title = l==='ro' ? 'Olga Nakonecinaia — CV' : 'Ольга Наконечная — резюме';
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.set===l?'true':'false')});
+    try{ if(location.hash.replace('#','')!==l) history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.set)})});
+  var h=(location.hash||'').replace('#','');
+  if(!h){ try{ var q=new URLSearchParams(location.search).get('lang'); if(q) h=q; }catch(e){} }
+  set(h==='ro'?'ro':'ru');
+})();
+</script>
+
+</body>
+</html>
